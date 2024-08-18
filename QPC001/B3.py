@@ -23,6 +23,11 @@ def solve(n: int, L: int) -> QuantumCircuit:
 
 from qiskit.quantum_info import Statevector, Operator
 
-qc = solve(3, 2)
+n = 5
+L = 8
+qc = QuantumCircuit(n)
+for i in range(n):
+    qc.h(i)
+qc.compose(solve(n, L), inplace=True)
 print(qc.draw())
 print(Statevector(qc).data)
